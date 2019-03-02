@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Listas das designações</h2>
+
+<table cellpadding="4">
+    <thead>
+        <tr>
+            <td><b>ID</b></td>
+            <td><b>Descrição</b></td>
+
+            <td> </td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var lista in ViewBag.ListaDesgincao)
+        {
+            <tr>
+                <td>@lista.DesignacaoID</td>
+                <td>@lista.Descricao</td>
+                <td><a href="/Designacao/Remover/@lista.DesignacaoID">Remover</a>  </td>
+            </tr>
+        }
+        <tr>
+            <td colspan="2"> <hr /> </td>
+
+        </tr>
+
+        <tr>
+            <td colspan="2">
+                <form action="/Designacao/AddView">
+                    <input type="submit" value="Cadastrar Novas Designações" />
+                </form>
+            </td>
+        </tr>
+    </tbody>
+
+</table>
+

@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewBag.Title = "Add";
+}
+
+<h2>Adiciona uma nova Pessoa</h2>
+
+<form action="/Pessoa/SavaOne" method="post" >
+    <table cellpadding="5">
+        <thead>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Nome completo :</td>
+                <td><input type="text" name="P.Nome" /></td>
+            </tr>
+
+            <tr>
+                <td>Estado :</td>
+                <td>
+                    <select name="P.Estado">
+                        @foreach (var Lista in ViewBag.EstadoLista)
+                        {
+                            <option value="@Lista.Descricao">@Lista.Descricao</option>
+                        }
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="2"><hr /></td>
+            </tr>
+
+            <tr>
+                <td colspan="2"><input type="submit" value="Criar" /></td>
+            </tr>
+        </tbody>
+    </table>
+</form>
+
+
+
+

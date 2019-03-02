@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<style>
+    link1.disabled {
+        pointer-events: none;
+    }
+</style>
+
+<h2>Lista de Congregações</h2>
+
+
+
+<form>
+    <table cellpadding="5">
+        <thead>
+            <tr>
+                <td><b>Nome da Congregação</b> </td>
+                <td> </td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var listaC in ViewBag.Listac)
+            {
+                <tr>
+                    <td>@listaC.NomeCongregacao</td>
+                    <td><a   style="pointer-events: none; display: inline-block; href="/Congregacao/Remover/@listaC.CongregacaoID">Remover</a></td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+</form>

@@ -1,0 +1,379 @@
+﻿
+@{
+    /**/
+
+    ViewBag.Title = "Index";
+}
+
+
+
+
+
+
+<style>
+    #TESOUROS {
+        background-color: dimgrey;
+    }
+
+    #discurso1 {
+        width: 700px;
+    }
+
+    #EMPENHE {
+        background-color: goldenrod;
+    }
+
+    #VIVER {
+        background-color: darkred;
+    }
+
+    #titulos {
+        color: white
+    }
+
+    #congregacao {
+        text-align: center
+    }
+
+    hr {
+        color: #f00;
+        height: 5px;
+    }
+</style>
+
+<h2 id="congregacao">   </h2>
+
+
+@*TESOUROS DA PALAVRA DE DEU*@
+
+<form action="/Home/Imput" method="post">
+    <table border="0" align="center" width="100%">
+        <caption>
+            Data : &nbsp &nbsp <input type="date" name="date" />
+
+            @*Essa Lista nao faz nada*@
+            &nbsp|&nbsp &nbsp Congregação :  &nbsp                    
+            
+            <select name="CongregacaoNome">
+                @foreach (var listaDeCongregacao in ViewBag.listaDeCongregacao)
+                {
+                    <option value="@listaDeCongregacao.NomeCongregacao"> @listaDeCongregacao.NomeCongregacao</option>
+                }
+            </select>
+        </caption>
+        <tbody>
+            <tr><td colspan="2"> <hr> </td> </tr>
+
+            <tr>
+                <td>
+                    <label> Cântico :  </label> <input size="1" type="text" name="C1" />  e Oraçâo :
+                </td>
+
+                <td>
+                    &nbsp  &nbsp  &nbsp  &nbsp   &nbsp  &nbsp  &nbsp  &nbsp  &nbsp   &nbsp      :
+                    <select name="Orador1">
+                        @foreach (var ListadeIrmaos in ViewBag.LIsta)
+                        {
+                            <option value="@ListadeIrmaos.Nome"> @ListadeIrmaos.Nome</option>
+                        }
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td><label>Comentários Introdutórios  (10 min.)</label>  </td>
+                <td>
+                    @*Presidente da reuniao*@
+                    <label> Presidente :</label>&nbsp
+                    <select name="PresidenteDaReuniao">
+                        @foreach (var ListadeIrmaos in ViewBag.LIsta)
+                        {
+                            <option value="@ListadeIrmaos.Nome"> @ListadeIrmaos.Nome</option>
+                        }
+                    </select>
+                </td>
+            </tr>
+
+            <tr><td colspan="2"> <hr /></td></tr>
+            <tr><td colspan="2" align="center"><div id="TESOUROS"><label> <a id="titulos"> TESOUROS DA PALAVRA DE DEUS </a></label> </div></td></tr>
+            <tr><td colspan="2"><br /></td></tr>
+
+            <tr>
+                @*TESOUROS DA PALAVRA DE DEUS*@
+                <td><label>Tema :&nbsp</label><input type="text" name="discurso1" />&nbsp<label>(10 min.)</label> </td>
+                <td>
+                    <label> Designado para :</label>
+                    <select name="discurso1Pessoa">
+                        @foreach (var ListadeIrmaos in ViewBag.LIsta)
+                        {
+                            <option value="@ListadeIrmaos.Nome"> @ListadeIrmaos.Nome</option>
+                        }
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td><label>Em Busca de Pérolas Espirituais  (8 min.)</label> </td>
+                <td>
+                    <label> Designado para :</label>
+                    <select name="BuscadeperolasPessoa">
+                        @foreach (var ListadeIrmaos in ViewBag.LIsta)
+                        {
+                            <option value="@ListadeIrmaos.Nome"> @ListadeIrmaos.Nome</option>
+                        }
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td><label>Leitura da Bíblia (4 min. ou menos)</label> </td>
+                <td>
+                    <label> Designado para :</label>
+                    <select name="LeituraDaBibliaPessoa">
+                        @foreach (var ListadeIrmaos in ViewBag.LIsta)
+                        {
+                            <option value="@ListadeIrmaos.Nome"> @ListadeIrmaos.Nome</option>
+                        }
+                    </select>
+                </td>
+            </tr>
+            <tr><td colspan="2"> <hr></td></tr>
+
+            <tr><td colspan="2" align="center"><div id="EMPENHE"><label> <a id="titulos"> EMPENHE-SE NO MINISTÉRIO</a></label> </div></td></tr>
+            <tr><td colspan="2"> <br> </td> </tr>
+            @*/ linha 1*@
+            <tr>
+                <td>
+
+                    <select name="Designacao1">
+                        @foreach (var ListaDesignacao in ViewBag.ListaDesignacao)
+                        {
+                            <option value="@ListaDesignacao.Descricao"> @ListaDesignacao.Descricao</option>
+                        }
+                    </select>
+                    &nbsp<label>(<input type="time" /> min.) </label>
+
+                </td>
+                <td>
+                    <label> Estudante / Ajudante:</label>
+                    <select name="Estudante1">
+                        @foreach (var ListadeIrmaos in ViewBag.LIsta)
+                        {
+                            <option value=" @ListadeIrmaos.Nome"> @ListadeIrmaos.Nome</option>
+                        }
+                    </select>
+                    &nbsp / &nbsp
+                    <select name="Ajudante1">
+                        @foreach (var ListadeIrmaos in ViewBag.LIsta)
+                        {
+                            <option value=" @ListadeIrmaos.Nome"> @ListadeIrmaos.Nome</option>
+                        }
+                    </select>
+                </td>
+            </tr>
+
+            @*segunada*@
+            <tr>
+                <td>
+
+                    <select name="Designacao2">
+                        @foreach (var ListaDesignacao in ViewBag.ListaDesignacao)
+                        {
+                            <option value="@ListaDesignacao.Descricao"> @ListaDesignacao.Descricao</option>
+                        }
+                    </select>
+                    &nbsp<label>(<input type="time" /> min.) </label>
+
+                </td>
+                <td>
+                    <label> Estudante / Ajudante:</label>
+                    <select name="Estudante2">
+                        @foreach (var ListadeIrmaos in ViewBag.LIsta)
+                        {
+                            <option value=" @ListadeIrmaos.Nome"> @ListadeIrmaos.Nome</option>
+                        }
+                    </select>
+                    &nbsp / &nbsp
+                    <select name="Ajudante2">
+                        @foreach (var ListadeIrmaos in ViewBag.LIsta)
+                        {
+                            <option value=" @ListadeIrmaos.Nome"> @ListadeIrmaos.Nome</option>
+                        }
+                    </select>
+                </td>
+            </tr>
+
+            @*Terceira*@
+            <tr>
+                <td>
+
+                    <select name="Designacao3">
+                        @foreach (var ListaDesignacao in ViewBag.ListaDesignacao)
+                        {
+                            <option value="@ListaDesignacao.Descricao"> @ListaDesignacao.Descricao</option>
+                        }
+                    </select>
+                    &nbsp<label>(<input type="time" /> min.) </label>
+
+                </td>
+                <td>
+                    <label> Estudante / Ajudante:</label>
+                    <select name="Estudante3">
+                        @foreach (var ListadeIrmaos in ViewBag.LIsta)
+                        {
+                            <option value=" @ListadeIrmaos.Nome"> @ListadeIrmaos.Nome</option>
+                        }
+                    </select>
+                    &nbsp / &nbsp
+                    <select name="Ajudante3">
+                        @foreach (var ListadeIrmaos in ViewBag.LIsta)
+                        {
+                            <option value=" @ListadeIrmaos.Nome"> @ListadeIrmaos.Nome</option>
+                        }
+                    </select>
+                </td>
+            </tr>
+
+
+            @*Quarta*@
+            <tr>
+                <td>
+
+                    <select name="Designacao4">
+                        @foreach (var ListaDesignacao in ViewBag.ListaDesignacao)
+                        {
+                            <option value="@ListaDesignacao.Descricao"> @ListaDesignacao.Descricao</option>
+                        }
+                    </select>
+                    &nbsp<label>(<input type="time" /> min.) </label>
+
+                </td>
+                <td>
+                    <label> Estudante / Ajudante:</label>
+                    <select name="Estudante4">
+                        @foreach (var ListadeIrmaos in ViewBag.LIsta)
+                        {
+                            <option value=" @ListadeIrmaos.Nome"> @ListadeIrmaos.Nome</option>
+                        }
+                    </select>
+                    &nbsp / &nbsp
+                    <select name="Ajudante4">
+                        @foreach (var ListadeIrmaos in ViewBag.LIsta)
+                        {
+                            <option value=" @ListadeIrmaos.Nome"> @ListadeIrmaos.Nome</option>
+                        }
+                    </select>
+                </td>
+            </tr>
+
+            @*Quinta*@
+            <tr>
+                <td>
+
+                    <select name="Designacao5">
+                        @foreach (var ListaDesignacao in ViewBag.ListaDesignacao)
+                        {
+                            <option value="@ListaDesignacao.Descricao"> @ListaDesignacao.Descricao</option>
+                        }
+                    </select>
+                    &nbsp<label>(<input type="time" /> min.) </label>
+
+                </td>
+                <td>
+                    <label> Estudante / Ajudante:</label>
+                    <select name="Estudante5">
+                        @foreach (var ListadeIrmaos in ViewBag.LIsta)
+                        {
+                            <option value=" @ListadeIrmaos.Nome"> @ListadeIrmaos.Nome</option>
+                        }
+                    </select>
+                    &nbsp / &nbsp
+                    <select name="Ajudante5">
+                        @foreach (var ListadeIrmaos in ViewBag.LIsta)
+                        {
+                            <option value=" @ListadeIrmaos.Nome"> @ListadeIrmaos.Nome</option>
+                        }
+                    </select>
+                </td>
+            </tr>
+            <tr><td colspan="2"> <hr /></td></tr>
+
+            <tr><td colspan="2" align="center"><div id="VIVER"><label><a id="titulos">VIVER COMO CRISTÃOS</a></label> </div></td></tr>
+
+            <tr><td colspan="2"> <br /></td></tr>
+
+            <tr>
+                <td colspan="2"><label> Cântico : </label> <input size="1" type="text" name="Cantico2" />  </td>
+
+            </tr>
+
+            <tr><td colspan="2"> <br /></td></tr>
+
+            <tr>
+                <td><label>Tema :&nbsp</label><input type="text" name="tema2" />&nbsp    <label>(<input type="time" /> min.) </label> </td>
+                <td>
+                    <label> Designado para :</label>
+                    <select name="tema2Pessoa">
+                        @foreach (var ListadeIrmaos in ViewBag.LIsta)
+                        {
+                            <option value=" @ListadeIrmaos.Nome"> @ListadeIrmaos.Nome</option>
+                        }
+                    </select>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td><label>Estudo Bíblico de Congregação (30 min.) </label>><label>(<input type="time" /> min.) </label> </td>
+                <td>
+                    <label>  Dirigente/Leitor:</label>
+                    <select name="Dirigente">
+                        @foreach (var ListadeIrmaos in ViewBag.LIsta)
+                        {
+                            <option value=" @ListadeIrmaos.Nome"> @ListadeIrmaos.Nome</option>
+                        }
+                    </select>
+                    &nbsp / &nbsp
+                    <select name="Leitor">
+                        @foreach (var ListadeIrmaos in ViewBag.LIsta)
+                        {
+                            <option value=" @ListadeIrmaos.Nome"> @ListadeIrmaos.Nome</option>
+                        }
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td><label> Cântico  <input size="1" type="text" name="Cantico3" /> </label> <label> e Oraçâo : </label> </td>
+
+
+                <td>
+                    &nbsp  &nbsp  &nbsp  &nbsp   &nbsp  &nbsp  &nbsp  &nbsp  &nbsp   &nbsp    &nbsp   &nbsp   &nbsp   &nbsp      :
+                    <select name="Oracao3">
+                        @foreach (var ListadeIrmaos in ViewBag.LIsta)
+                        {
+                            <option value=" @ListadeIrmaos.Nome"> @ListadeIrmaos.Nome</option>
+                        }
+                    </select>
+
+                </td>
+            </tr>
+
+
+            <tr>
+                <td> <hr> </td>
+
+            </tr>
+
+            <tr>
+                <td> <input type="submit" value="Ver" id="ir" /> </td>
+                <td>  </td>
+            </tr>
+
+
+        </tbody>
+    </table>
+</form>
+
+
+
