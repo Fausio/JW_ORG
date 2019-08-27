@@ -12,13 +12,13 @@
         <tbody>
             <tr>
                 <td>Nome completo :</td>
-                <td><input type="text" name="P.Nome" /></td>
+                <td><input type="text" name="P.Nome" class="form-control"/></td>
             </tr>
 
             <tr>
                 <td>Estado :</td>
                 <td>
-                    <select name="P.Estado">
+                    <select name="P.Estado" class="form-control">
                         @foreach (var Lista in ViewBag.EstadoLista)
                         {
                             <option value="@Lista.Descricao">@Lista.Descricao</option>
@@ -32,7 +32,7 @@
             </tr>
 
             <tr>
-                <td colspan="2"><input type="submit" value="Criar" /></td>
+                <td colspan="2"><input type="submit" value="Criar" class="btn"/></td>
             </tr>
         </tbody>
     </table>

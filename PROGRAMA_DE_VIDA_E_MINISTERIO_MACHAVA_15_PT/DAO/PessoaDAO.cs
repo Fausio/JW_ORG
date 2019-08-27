@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using PROGRAMA_DE_VIDA_E_MINISTERIO_MACHAVA_15_PT.AppContext;
 using PROGRAMA_DE_VIDA_E_MINISTERIO_MACHAVA_15_PT.Models;
+using PagedList;
 
 
 namespace PROGRAMA_DE_VIDA_E_MINISTERIO_MACHAVA_15_PT.DAO
@@ -20,8 +21,20 @@ namespace PROGRAMA_DE_VIDA_E_MINISTERIO_MACHAVA_15_PT.DAO
         }
 
         // Lista de Pessoas
-        public List<Pessoa> ListaPessoa()
+        public IPagedList<Pessoa> PagedPessoa(int? Pagina)
         {
+            int NumeroDeLinhas = 14;
+            int npagina = Pagina ?? 1;
+            var busca = from p in contexto.pessoas
+                        orderby p.Nome
+                        select p;
+
+            return busca.ToPagedList(npagina, NumeroDeLinhas);
+        }
+
+        public IList<Pessoa> ListaPessoa()
+        {
+            
             var busca = from p in contexto.pessoas
                         orderby p.Nome
                         select p;

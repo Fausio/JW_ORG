@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Web;
+using System.Web; 
 
 
 namespace PROGRAMA_DE_VIDA_E_MINISTERIO_MACHAVA_15_PT.Models
@@ -12,9 +13,8 @@ namespace PROGRAMA_DE_VIDA_E_MINISTERIO_MACHAVA_15_PT.Models
 
         public string Descricao { get; set; }
 
-        public List<Pessoa> Pessoas { get; set; }
-      
+       
 
-   
+
     }
 }

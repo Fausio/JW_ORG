@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using PROGRAMA_DE_VIDA_E_MINISTERIO_MACHAVA_15_PT.DAO;
 using PROGRAMA_DE_VIDA_E_MINISTERIO_MACHAVA_15_PT.Models;
+using PagedList;
 
 
 namespace PROGRAMA_DE_VIDA_E_MINISTERIO_MACHAVA_15_PT.Controllers
@@ -13,13 +14,16 @@ namespace PROGRAMA_DE_VIDA_E_MINISTERIO_MACHAVA_15_PT.Controllers
     {
         // GET: Pessoa
         [Route("ListaDePessoas", Name = "PList")]
-        public ActionResult Index()
+        public ActionResult Index(int? Npagina)
         {
-            var PessoaDao = new PessoaDAO();
-            ViewBag.LIstaPessoa = PessoaDao.ListaPessoa();
-
-            return View();
+           int PaginaActual = Npagina ?? 1;
+           var PessoaDao = new PessoaDAO();
+           IPagedList<Pessoa> LIstaPessoa = PessoaDao.PagedPessoa(PaginaActual);
+ 
+            return View(LIstaPessoa);
         }
+
+ 
 
         [Route("FormAdicionaPessoas", Name = "PAdd")]
         public ActionResult Addview()
@@ -29,7 +33,7 @@ namespace PROGRAMA_DE_VIDA_E_MINISTERIO_MACHAVA_15_PT.Controllers
             return View();
         }
 
-       [HttpPost]
+        [HttpPost]
         public ActionResult SavaOne(Pessoa P)
         {
             PessoaDAO pessoaDAO = new PessoaDAO();

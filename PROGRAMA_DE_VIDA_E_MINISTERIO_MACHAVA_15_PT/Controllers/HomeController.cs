@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using PROGRAMA_DE_VIDA_E_MINISTERIO_MACHAVA_15_PT.DAO;
 using ClosedXML.Excel;
+using PROGRAMA_DE_VIDA_E_MINISTERIO_MACHAVA_15_PT.Models;
 
 
 
@@ -21,15 +22,20 @@ namespace PROGRAMA_DE_VIDA_E_MINISTERIO_MACHAVA_15_PT.Controllers
 
             DesignacaoDAO designacaoDAO = new DesignacaoDAO();
             CongregacaoDAO congregacaoDAO = new CongregacaoDAO();
+            Tempo time = new Tempo(); 
 
             ViewBag.ListaDesignacao = designacaoDAO.ListaDesignacao();
             ViewBag.listaDeCongregacao = congregacaoDAO.ListaDeCongregacao();
+            
+
             return View();
 
         }
+
         [HttpPost]
-        public ActionResult Imput(string C1, DateTime date, string livro, string nome1, string PresidenteDaReuniao, string Orador1, string discurso1, string discurso1Pessoa, string BuscadeperolasPessoa, string LeituraDaBibliaPessoa, string Designacao1, string Estudante1, string Ajudante1, string Designacao2, string Estudante2, string Ajudante2, string Designacao3, string Estudante3, string Ajudante3, string Designacao4, string Estudante4, string Ajudante4, string Designacao5, string Estudante5, string Ajudante5,string Cantico2, string tema2,string tema2Pessoa, string Dirigente, string Leitor,string Cantico3,string Oracao3)
+        public ActionResult Imput(DateTime? A18, DateTime? A19, DateTime? A20, DateTime? A11, DateTime? A12, DateTime? A13, DateTime? A14, DateTime? A15, string C1, DateTime date, string livro, string nome1, string PresidenteDaReuniao, string Orador1, string discurso1, string discurso1Pessoa, string BuscadeperolasPessoa, string LeituraDaBibliaPessoa, string Designacao1, string Estudante1, string Ajudante1, string Designacao2, string Estudante2, string Ajudante2, string Designacao3, string Estudante3, string Ajudante3, string Designacao4, string Estudante4, string Ajudante4, string Designacao5, string Estudante5, string Ajudante5,string Cantico2, string tema2,string tema2Pessoa, string Dirigente, string Leitor,string Cantico3,string Oracao3, DateTime? A7, DateTime? A8, DateTime? A9)
         {
+            if (A7 != null) { 
 
             var Wb = new XLWorkbook();                              /*criar um WorkBook*/
             var Ws = Wb.Worksheets.Add("Planilha 1");               /* Adicionar uma planinha */
@@ -61,22 +67,33 @@ namespace PROGRAMA_DE_VIDA_E_MINISTERIO_MACHAVA_15_PT.Controllers
 
                                                          range1.Style.Font.SetFontColor(XLColor.White);
                                                          range2.Style.Font.SetFontColor(XLColor.White);
+                #region Formatacao da celulas de tempo
 
-            Ws.Cell("A7").Value="0:00";
-            Ws.Cell("A8").Value="0:00";
-            Ws.Cell("A9").Value="0:00"; 
-            Ws.Cell("A11").Value="0:00";
-            Ws.Cell("A12").Value="0:00";
-            Ws.Cell("A13").Value="0:00";
-            Ws.Cell("A14").Value="0:00";
-            Ws.Cell("A15").Value="0:00";
-            Ws.Cell("A17").Value="0:00";
-            Ws.Cell("A18").Value="0:00";
-            Ws.Cell("A19").Value="0:00";
-            Ws.Cell("A20").Value="0:00";
-            Ws.Cell("A21").Value="0:00";
+                Ws.Cell("A5").Value = "3 min.";
+              
+                // tempo das partes do - TESOURO DA PALAVRA DE DEUS
+                Ws.Cell("A7").Value = Convert.ToDateTime(A7).Hour + " min.";     //- Discurso um
+                Ws.Cell("A8").Value = Convert.ToDateTime(A8).Hour + " min.";     // Em busca de perolas espirituas
+                Ws.Cell("A9").Value = Convert.ToDateTime(A9).Hour + " min. ou menos";     // leitura da biblia 
 
-            //PINTAMDO CELULAS A
+                // tempo das partes do Empenhe-se no ministerio
+                Ws.Cell("A11").Value = Convert.ToDateTime(A11).Hour + " min.";
+                Ws.Cell("A12").Value = Convert.ToDateTime(A12).Hour + " min.";
+                Ws.Cell("A13").Value = Convert.ToDateTime(A13).Hour + " min.";
+                Ws.Cell("A14").Value = Convert.ToDateTime(A14).Hour + " min.";
+                Ws.Cell("A15").Value = Convert.ToDateTime(A15).Hour + " min.";
+
+                // tempo das partes do viver como creistao 
+                Ws.Cell("A18").Value = Convert.ToDateTime(A18).Hour + " min.";  //discurso
+                Ws.Cell("A19").Value = "30 min.";                               //estudo biblico da congregacao
+                Ws.Cell("A20").Value = "3 min.";                                //recapitulaçao e antivisao da proxima reuniao
+
+                #endregion
+ 
+
+              
+               
+                //PINTAMDO CELULAS A
             Ws.Cell("A6").Style.Fill.SetBackgroundColor(XLColor.DarkGray);
             Ws.Cell("A10").Style.Fill.SetBackgroundColor(XLColor.DarkGoldenrod);
             Ws.Cell("A16").Style.Fill.SetBackgroundColor(XLColor.DarkRed);
@@ -96,7 +113,7 @@ namespace PROGRAMA_DE_VIDA_E_MINISTERIO_MACHAVA_15_PT.Controllers
             
             //TESOURO DA PALAVRA DE DEUS                                                            MUDAR A COR DA FONTE PARA BRANCO                                MUDA A COR DA CELULA, COR DE FUNDO PARA AMARELO                         ALINHAR O TEXTO NO CENTRO DA CELULA
             Ws.Cell("B6").Value = "TESOURO DA PALAVRA DE DEUS";                         Ws.Cell("B6").Style.Font.SetFontColor(XLColor.White);                Ws.Cell("B6").Style.Fill.SetBackgroundColor(XLColor.DarkGray);       Ws.Cell("B6").Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
-            Ws.Cell("B7").Value = "● " + discurso1;                                      /*|*/ Ws.Cell("D7").Value = discurso1Pessoa;
+            Ws.Cell("B7").Value = "● "+ "\""+ discurso1 +"\"";                                      /*|*/ Ws.Cell("D7").Value = discurso1Pessoa;
             Ws.Cell("B8").Value = "● Em Busca de Pérolas Espirituais  (8 min.)";    /*|*/ Ws.Cell("D8").Value = BuscadeperolasPessoa;
             Ws.Cell("B9").Value = "● Leitura da Bíblia: (4 min. ou menos)";          /*|*/ Ws.Cell("C9").Value = "Estudante"; Ws.Cell("D9").Value = LeituraDaBibliaPessoa;
 
@@ -113,9 +130,9 @@ namespace PROGRAMA_DE_VIDA_E_MINISTERIO_MACHAVA_15_PT.Controllers
 
 
             Ws.Cell("B17").Value = "● Cântico : " + Convert.ToString(Cantico2);
-            Ws.Cell("B18").Value = "● " + tema2;                                             /*|*/ Ws.Cell("D18").Value = tema2Pessoa;
+            Ws.Cell("B18").Value = "● "+"\"" +tema2+"\"";                                             /*|*/ Ws.Cell("D18").Value = tema2Pessoa;
             Ws.Cell("B19").Value = "● Estudo Bíblico de Congregação: (30 min.)";         /*|*/ Ws.Cell("C19").Value = "Dirigente/Leitor: ";                        Ws.Cell("D19").Value = Dirigente + " / " + Leitor;
-            Ws.Cell("B20").Value = "● Recapitulação e Antivião da Reunião da Proxima Semana (3 min.)";                                            
+            Ws.Cell("B20").Value = "● Recapitulação e Antivisão da Reunião da Proxima Semana (3 min.)";                                            
             Ws.Cell("B21").Value = "● Cântico: " + Convert.ToString(Cantico3);            /*|*/ Ws.Cell("C21").Value = "Oração"; Ws.Cell("D21").Value = Oracao3;        
             ////Ajusto a numeracao da linha 
             //Linha--;
@@ -141,6 +158,10 @@ namespace PROGRAMA_DE_VIDA_E_MINISTERIO_MACHAVA_15_PT.Controllers
 
 
             return View();
+
+            }
+            return RedirectToAction("Index");
+
         }
        public ActionResult OpenPath()
         {

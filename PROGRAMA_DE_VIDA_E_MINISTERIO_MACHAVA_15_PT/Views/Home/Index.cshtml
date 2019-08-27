@@ -1,7 +1,4 @@
-﻿
-@{
-    /**/
-
+﻿@{
     ViewBag.Title = "Index";
 }
 
@@ -48,12 +45,14 @@
 
 <form action="/Home/Imput" method="post">
     <table border="0" align="center" width="100%">
-        <caption>
-            Data : &nbsp &nbsp <input type="date" name="date" />
+        <caption class="caption" >
+            Data : &nbsp &nbsp <input type="date" name="date" /> A  <input type="date" name="date" />
 
             @*Essa Lista nao faz nada*@
-            &nbsp|&nbsp &nbsp Congregação :  &nbsp                    
-            
+            &nbsp|&nbsp &nbsp Congregação :  &nbsp
+
+            <input type="text" name="date" />  &nbsp &nbsp
+
             <select name="CongregacaoNome">
                 @foreach (var listaDeCongregacao in ViewBag.listaDeCongregacao)
                 {
@@ -81,7 +80,7 @@
             </tr>
 
             <tr>
-                <td><label>Comentários Introdutórios  (10 min.)</label>  </td>
+                <td><label>Comentários Introdutórios</label>  </td>
                 <td>
                     @*Presidente da reuniao*@
                     <label> Presidente :</label>&nbsp
@@ -100,7 +99,7 @@
 
             <tr>
                 @*TESOUROS DA PALAVRA DE DEUS*@
-                <td><label>Tema :&nbsp</label><input type="text" name="discurso1" />&nbsp<label>(10 min.)</label> </td>
+                <td><label>Tema :&nbsp</label><input type="text" name="discurso1" />&nbsp <label><input type="time" name="A7" /> min. </label>   @Html.ValidationMessage("I.Time") </td>
                 <td>
                     <label> Designado para :</label>
                     <select name="discurso1Pessoa">
@@ -113,7 +112,7 @@
             </tr>
 
             <tr>
-                <td><label>Em Busca de Pérolas Espirituais  (8 min.)</label> </td>
+                <td><label>Em Busca de Pérolas Espirituais </label> <label><input type="time" name="A8" /> min. </label>    </td>
                 <td>
                     <label> Designado para :</label>
                     <select name="BuscadeperolasPessoa">
@@ -126,7 +125,7 @@
             </tr>
 
             <tr>
-                <td><label>Leitura da Bíblia (4 min. ou menos)</label> </td>
+                <td><label>Leitura da Bíblia </label> <label><input type="time" name="A9" /> min. </label>   </td>
                 <td>
                     <label> Designado para :</label>
                     <select name="LeituraDaBibliaPessoa">
@@ -151,7 +150,7 @@
                             <option value="@ListaDesignacao.Descricao"> @ListaDesignacao.Descricao</option>
                         }
                     </select>
-                    &nbsp<label>(<input type="time" /> min.) </label>
+                    &nbsp<label><input type="time" name="A11" /> min. </label>
 
                 </td>
                 <td>
@@ -182,7 +181,7 @@
                             <option value="@ListaDesignacao.Descricao"> @ListaDesignacao.Descricao</option>
                         }
                     </select>
-                    &nbsp<label>(<input type="time" /> min.) </label>
+                    &nbsp<label><input type="time" name="A12" /> min. </label>
 
                 </td>
                 <td>
@@ -213,7 +212,7 @@
                             <option value="@ListaDesignacao.Descricao"> @ListaDesignacao.Descricao</option>
                         }
                     </select>
-                    &nbsp<label>(<input type="time" /> min.) </label>
+                    &nbsp<label><input type="time" name="A13" /> min. </label>
 
                 </td>
                 <td>
@@ -245,7 +244,7 @@
                             <option value="@ListaDesignacao.Descricao"> @ListaDesignacao.Descricao</option>
                         }
                     </select>
-                    &nbsp<label>(<input type="time" /> min.) </label>
+                    &nbsp<label><input type="time" name="A14" /> min. </label>
 
                 </td>
                 <td>
@@ -276,7 +275,7 @@
                             <option value="@ListaDesignacao.Descricao"> @ListaDesignacao.Descricao</option>
                         }
                     </select>
-                    &nbsp<label>(<input type="time" /> min.) </label>
+                    &nbsp<label><input type="time" name="A15"/> min. </label>
 
                 </td>
                 <td>
@@ -310,7 +309,7 @@
             <tr><td colspan="2"> <br /></td></tr>
 
             <tr>
-                <td><label>Tema :&nbsp</label><input type="text" name="tema2" />&nbsp    <label>(<input type="time" /> min.) </label> </td>
+                <td><label>Tema :&nbsp</label><input type="text" name="tema2" />&nbsp    <label><input type="time" name="A18" /> min. </label> </td>
                 <td>
                     <label> Designado para :</label>
                     <select name="tema2Pessoa">
@@ -324,7 +323,7 @@
 
 
             <tr>
-                <td><label>Estudo Bíblico de Congregação (30 min.) </label>><label>(<input type="time" /> min.) </label> </td>
+                <td><label>Estudo Bíblico de Congregação &nbsp  </label>  <label><input type="time" name="A19"/> min. </label> </td>
                 <td>
                     <label>  Dirigente/Leitor:</label>
                     <select name="Dirigente">
@@ -366,7 +365,7 @@
             </tr>
 
             <tr>
-                <td> <input type="submit" value="Ver" id="ir" /> </td>
+                <td> <input type="submit" value="Ver" id="ir" class="btn" /> </td>
                 <td>  </td>
             </tr>
 

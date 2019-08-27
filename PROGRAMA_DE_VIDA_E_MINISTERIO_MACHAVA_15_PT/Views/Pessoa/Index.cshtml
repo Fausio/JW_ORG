@@ -1,54 +1,47 @@
-﻿
-@{
-    ViewBag.Title = "Index";
-}
+﻿@model PagedList.IPagedList<PROGRAMA_DE_VIDA_E_MINISTERIO_MACHAVA_15_PT.Models.Pessoa>
 
-<h2>Lista de pessoa cadastradas</h2>
+@using PagedList.Mvc;
 
-<table cellpadding="4">
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+<h2>Lista de pessoa cadastradas: ( Página @Model.PageNumber de @Model.PageCount )</h2>
+
+<table class="table table-hover">
     <thead>
         <tr>
             <td><b>ID</b></td>
-            <td>&nbsp  &nbsp   </td>
+
             <td><b>Nome Completo</b></td>
-            <td>&nbsp  &nbsp  &nbsp </td>
+
             <td><b>Estado</b></td>
-            <td>&nbsp  &nbsp  &nbsp </td>
-            <td>&nbsp  &nbsp  &nbsp </td>
+
         </tr>
     </thead>
 
-
-
     <tbody>
-        @foreach (var L in ViewBag.LIstaPessoa)
+        @foreach (var L in Model)
         {
             <tr>
                 <td>@L.PessoaID</td>
-                <td>   </td>
+
                 <td>@L.Nome</td>
-                <td> </td>
+
                 <td>@L.Estado</td>
-                <td></td>
-                <td>
-                    @Html.RouteLink("Remover", "PDelete", new { Id = @L.PessoaID })
-                </td>
+
+                <td>                    @Html.RouteLink("Remover", "PDelete", new { Id = @L.PessoaID })                </td>
 
             </tr>
         }
 
-        <tr>
-            <td colspan="5"><hr></td>
-        </tr>
 
-        <tr>
-            <td colspan="5"> @Html.RouteLink("Cadastrar uma nova pessoa", "PAdd")</td>
-        </tr>
+
+        
     </tbody>
 
-
-
-
-
 </table>
+@Html.RouteLink("Cadastrar uma nova pessoa", "PAdd")
+@Html.PagedListPager(Model, Page => Url.Action("Index", new { Npagina = Page }))
+
+
+
+
 
